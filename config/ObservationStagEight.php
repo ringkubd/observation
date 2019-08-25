@@ -1,0 +1,4 @@
+<?php
+return [
+	'Nya idéer och projekt distraherar mig ibland från tidigare projekt', 'Jag kämpar mig förbi motgångar. Jag ger inte upp lätt', 'Jag sätter ofta upp ett mål men bestämmer mig senare för att följa ett annat', 'Jag anstränger mig i det jag gör', 'Jag har svårt att hålla fokus i projekt som tar mer än några månader att slutföra', 'Jag fullföljer det jag påbörjar', 'Mina intressen förändras från månad till månad', 'Jag är flitig, jag ger aldrig upp', 'Jag har varit engagerad i ett projekt eller med en idé ett kort tag men sedan förlorat intresset','Jag har kämpat mig igenom motgångar för att nå ett viktigt mål'
+];

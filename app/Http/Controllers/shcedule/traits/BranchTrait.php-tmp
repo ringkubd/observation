@@ -1,0 +1,36 @@
+<?php
+namespace App\Http\Controllers\shcedule\traits;
+use App\branch;
+use Auth;
+use Cache;
+
+trait BranchTrait {
+	public $sc_user_branch;
+	public
+function getallbranch_for_shedule() {
+
+		$varibalename = "getallbranch_for_shedule".$this->companyid();
+
+		if (Auth::guard('owner')->check()) {
+			//$allbranch = branch::whereCompany_id($this->companyid())->select('id', 'branch_name')->get()->toArray();
+
+			Cache::remember($varibalename, 120, function () {
+					return branch::whereCompany_id($this->companyid())->select('id', 'branch_name')->get()->toArray();
+				});
+			return Cache::get($varibalename);
+			//return $allbranch;
+		} else {
+
+			$userbranch           = explode(',', Auth::user()->branch_id);
+			$this->sc_user_branch = explode(',', Auth::user()->branch_id);
+			//$allbranch = branch::whereIn('id', $userbranch)->whereCompany_id($this->companyid())->select('id', 'branch_name')->get()->toArray();
+
+			Cache::remember($varibalename, 120, function () {
+					return branch::whereIn('id', $this->sc_user_branch)->whereCompany_id($this->companyid())->select('id', 'branch_name')->get()->toArray();
+				});
+			return Cache::get($varibalename);
+			//return $allbranch;
+		}
+
+	}
+}

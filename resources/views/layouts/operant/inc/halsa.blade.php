@@ -1,0 +1,1008 @@
+<div class="row">
+  <div class="col-md-4">
+    <button type="button" class="btn btn-primary halsa_l1" style="width: 100%; font-weight: bold;">Level 1</button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-primary halsa_l2" style="width: 100%; font-weight: bold;">Level 2</button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-primary halsa_l3" style="width: 100%; font-weight: bold;">Level 3</button>
+  </div>
+</div>
+<table class="table main-table">
+    <tr>
+        <th colspan="2">{{trans('status.halsa')}}</th>
+        <th>0</th>
+        <th>&#60; 50</th>
+        <th>&#62; 50</th>
+        <th>100</th>
+    </tr>
+
+    <tr class="halsa_level_1">
+        <td rowspan="6" class="white w-30">
+            1
+        </td>
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_1" name="teck_level_1_one">
+              <label for="halsa_1"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_2" name="teck_level_1_one">
+              <label for="halsa_2"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_3" name="teck_level_1_one">
+              <label for="halsa_3"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_4" name="teck_level_1_one">
+              <label for="halsa_4"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_1">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_5" name="teck_level_1_two">
+              <label for="halsa_5"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_6" name="teck_level_1_two">
+              <label for="halsa_6"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_7" name="teck_level_1_two">
+              <label for="halsa_7"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_8" name="teck_level_1_two">
+              <label for="halsa_8"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_1">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_9" name="teck_level_1_three">
+              <label for="halsa_9"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_10" name="teck_level_1_three">
+              <label for="halsa_10"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_11" name="teck_level_1_three">
+              <label for="halsa_11"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_12" name="teck_level_1_three">
+              <label for="halsa_12"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_1">
+        <td class="white">
+            Äta frukost, lunch och middag minst 6 av 7 dagar
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_13" name="teck_level_1_four">
+              <label for="halsa_13"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_14" name="teck_level_1_four">
+              <label for="halsa_14"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_15" name="teck_level_1_four">
+              <label for="halsa_15"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_16" name="teck_level_1_four">
+              <label for="halsa_16"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_1">
+        <td class="white">
+            Avstå från all form av alkohol och otillåtna droger
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_17" name="teck_level_1_five">
+              <label for="halsa_17"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_18" name="teck_level_1_five">
+              <label for="halsa_18"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_19" name="teck_level_1_five">
+              <label for="halsa_19"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_20" name="teck_level_1_five">
+              <label for="halsa_20"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_1">
+        <td class="white">
+            Lämna urinprov vid uppmaning
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_21" name="teck_level_1_six">
+              <label for="halsa_21"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_22" name="teck_level_1_six">
+              <label for="halsa_22"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_23" name="teck_level_1_six">
+              <label for="halsa_23"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_24" name="teck_level_1_six">
+              <label for="halsa_24"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white w-30" rowspan="18">
+            2
+        </td>
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_25" name="teck_level_1_seven">
+              <label for="halsa_25"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_26" name="teck_level_1_seven">
+              <label for="halsa_26"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_27" name="teck_level_1_seven">
+              <label for="halsa_27"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_28" name="teck_level_1_seven">
+              <label for="halsa_28"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_29" name="teck_level_1_eight">
+              <label for="halsa_29"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_30" name="teck_level_1_eight">
+              <label for="halsa_30"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_31" name="teck_level_1_eight">
+              <label for="halsa_31"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_32" name="teck_level_1_eight">
+              <label for="halsa_32"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_33" name="teck_level_1_nine">
+              <label for="halsa_33"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_34" name="teck_level_1_nine">
+              <label for="halsa_34"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_35" name="teck_level_1_nine">
+              <label for="halsa_35"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_36" name="teck_level_1_nine">
+              <label for="halsa_36"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_37" name="teck_level_1_ten">
+              <label for="halsa_37"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_38" name="teck_level_1_ten">
+              <label for="halsa_38"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_39" name="teck_level_1_ten">
+              <label for="halsa_39"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_40" name="teck_level_1_ten">
+              <label for="halsa_40"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_41" name="teck_level_1_eleven">
+              <label for="halsa_41"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_42" name="teck_level_1_eleven">
+              <label for="halsa_42"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_43" name="teck_level_1_eleven">
+              <label for="halsa_43"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_44" name="teck_level_1_eleven">
+              <label for="halsa_44"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Gå till sängs i tid
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_45" name="teck_level_1_twelve">
+              <label for="halsa_45"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_46" name="teck_level_1_twelve">
+              <label for="halsa_46"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_47" name="teck_level_1_twelve">
+              <label for="halsa_47"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_48" name="teck_level_1_twelve">
+              <label for="halsa_48"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Sköta hygienen med bl a daglig tvätt/dusch och tandborstning
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_49" name="teck_level_1_thirteen">
+              <label for="halsa_49"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_50" name="teck_level_1_thirteen">
+              <label for="halsa_50"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_51" name="teck_level_1_thirteen">
+              <label for="halsa_51"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_52" name="teck_level_1_thirteen">
+              <label for="halsa_52"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Duscha och byta om vid aktivitet där så påbjuds
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_53" name="teck_level_1_fourty">
+              <label for="halsa_53"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_54" name="teck_level_1_fourty">
+              <label for="halsa_54"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_55" name="teck_level_1_fourty">
+              <label for="halsa_55"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_56" name="teck_level_1_fourty">
+              <label for="halsa_56"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Duscha och byta om tillsammans med andra elever utan att kräva undantag
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_57" name="teck_level_1_fifteen">
+              <label for="halsa_57"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_58" name="teck_level_1_fifteen">
+              <label for="halsa_58"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_59" name="teck_level_1_fifteen">
+              <label for="halsa_59"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_60" name="teck_level_1_fifteen">
+              <label for="halsa_60"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Tvätta bort allt smink före sänggående
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_61" name="teck_level_1_sixteen">
+              <label for="halsa_61"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_62" name="teck_level_1_sixteen">
+              <label for="halsa_62"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_63" name="teck_level_1_sixteen">
+              <label for="halsa_63"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_64" name="teck_level_1_sixteen">
+              <label for="halsa_64"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Byta till rena underkläder efter dusch och byta övriga klädesplagg när de är smutsiga eller luktar svett
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_65" name="teck_level_1_seventeen">
+              <label for="halsa_65"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_66" name="teck_level_1_seventeen">
+              <label for="halsa_66"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_67" name="teck_level_1_seventeen">
+              <label for="halsa_67"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_68" name="teck_level_1_seventeen">
+              <label for="halsa_68"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Delta i obligatoriska fysiska aktiviteter
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_69" name="teck_level_1_eighteen">
+              <label for="halsa_69"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_70" name="teck_level_1_eighteen">
+              <label for="halsa_70"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_71" name="teck_level_1_eighteen">
+              <label for="halsa_71"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_72" name="teck_level_1_eighteen">
+              <label for="halsa_72"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Genomgå konditionstest
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_73" name="teck_level_1_nighteen">
+              <label for="halsa_73"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_74" name="teck_level_1_nighteen">
+              <label for="halsa_74"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_75" name="teck_level_1_nighteen">
+              <label for="halsa_75"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_76" name="teck_level_1_nighteen">
+              <label for="halsa_76"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Äta en varierad kost på bestämda tider (frukost, lunch och middag)
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_77" name="teck_level_1_twenty">
+              <label for="halsa_77"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_78" name="teck_level_1_twenty">
+              <label for="halsa_78"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_79" name="teck_level_1_twenty">
+              <label for="halsa_79"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_80" name="teck_level_1_twenty">
+              <label for="halsa_80"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Ta ordinerad medicin på regelbundna tider
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_81" name="teck_level_1_twentyone">
+              <label for="halsa_81"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_82" name="teck_level_1_twentyone">
+              <label for="halsa_82"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_83" name="teck_level_1_twentyone">
+              <label for="halsa_83"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_84" name="teck_level_1_twentyone">
+              <label for="halsa_84"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Ej prata om droger på ett förhärligande sätt
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_85" name="teck_level_1_twentytwo">
+              <label for="halsa_85"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_86" name="teck_level_1_twentytwo">
+              <label for="halsa_86"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_87" name="teck_level_1_twentytwo">
+              <label for="halsa_87"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_88" name="teck_level_1_twentytwo">
+              <label for="halsa_88"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Avstå från att använda kläder, musik och andra attribut som kan kopplas till droger
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_89" name="teck_level_1_twentythree">
+              <label for="halsa_89"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_90" name="teck_level_1_twentythree">
+              <label for="halsa_90"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_91" name="teck_level_1_twentythree">
+              <label for="halsa_91"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_92" name="teck_level_1_twentythree">
+              <label for="halsa_92"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_2" style="display:none">
+        <td class="white">
+            Klä sig lämpligt i förhållande till årstid och situation
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_93" name="teck_level_1_twentyfour">
+              <label for="halsa_93"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_94" name="teck_level_1_twentyfour">
+              <label for="halsa_94"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_95" name="teck_level_1_twentyfour">
+              <label for="halsa_95"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_96" name="teck_level_1_twentyfour">
+              <label for="halsa_96"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_3" style="display:none">
+        <td rowspan="9" class="white w-30">
+            3
+        </td>
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_97" name="teck_level_1_twentyfive">
+              <label for="halsa_97"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_98" name="teck_level_1_twentyfive">
+              <label for="halsa_98"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_99" name="teck_level_1_twentyfive">
+              <label for="halsa_99"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_100" name="teck_level_1_twentyfive">
+              <label for="halsa_100"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_101" name="teck_level_1_twentysix">
+              <label for="halsa_101"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_102" name="teck_level_1_twentysix">
+              <label for="halsa_102"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_103" name="teck_level_1_twentysix">
+              <label for="halsa_103"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_104" name="teck_level_1_twentysix">
+              <label for="halsa_104"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_105" name="teck_level_1_twentyserven">
+              <label for="halsa_105"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_106" name="teck_level_1_twentyserven">
+              <label for="halsa_106"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_107" name="teck_level_1_twentyserven">
+              <label for="halsa_107"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_108" name="teck_level_1_twentyserven">
+              <label for="halsa_108"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_109" name="teck_level_1_twentyeight">
+              <label for="halsa_109"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_110" name="teck_level_1_twentyeight">
+              <label for="halsa_110"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_111" name="teck_level_1_twentyeight">
+              <label for="halsa_111"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_112" name="teck_level_1_twentyeight">
+              <label for="halsa_112"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Plats för personliga kriterier
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_113" name="teck_level_1_twentynine">
+              <label for="halsa_113"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_114" name="teck_level_1_twentynine">
+              <label for="halsa_114"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_115" name="teck_level_1_twentynine">
+              <label for="halsa_115"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_116" name="teck_level_1_twentynine">
+              <label for="halsa_116"></label>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Aktivt ta avstånd från personer som använder droger
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_117" name="teck_level_1_thirty">
+              <label for="halsa_117"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_118" name="teck_level_1_thirty">
+              <label for="halsa_118"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_119" name="teck_level_1_thirty">
+              <label for="halsa_119"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_120" name="teck_level_1_thirty">
+              <label for="halsa_120"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Informera tjänstgörande personal angående kännedom om person som använder eller ämnar använda illegala droger
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_121" name="teck_level_1_thirtyone">
+              <label for="halsa_121"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_122" name="teck_level_1_thirtyone">
+              <label for="halsa_122"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_123" name="teck_level_1_thirtyone">
+              <label for="halsa_123"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_124" name="teck_level_1_thirtyone">
+              <label for="halsa_124"></label>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Vid medicinering sköta denna självständigt
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_125" name="teck_level_1_thirtytwo">
+              <label for="halsa_125"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_126" name="teck_level_1_thirtytwo">
+              <label for="halsa_126"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_127" name="teck_level_1_thirtytwo">
+              <label for="halsa_127"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_128" name="teck_level_1_thirtytwo">
+              <label for="halsa_128"></label>
+            </div>
+        </td>
+    </tr>
+    <tr class="halsa_level_3" style="display:none">
+        <td class="white">
+            Aktivt vårda sin hälsa, såsom med regelbunden motion, skötande av kosthållning och ej vara destruktiv i annat avseende.
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_129" name="teck_level_1_thirtythree">
+              <label for="halsa_129"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_130" name="teck_level_1_thirtythree">
+              <label for="halsa_130"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_131" name="teck_level_1_thirtythree">
+              <label for="halsa_131"></label>
+            </div>
+        </td>
+        <td class="white w-30">
+            <div class="form-group checkbox">
+              <input type="radio" id="halsa_132" name="teck_level_1_thirtythree">
+              <label for="halsa_132"></label>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            

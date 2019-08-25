@@ -1,0 +1,82 @@
+.main-menu-nav {
+    margin: 0;
+}
+.slider-area {
+	background:#00bcff;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+    min-height: 100vh;
+}
+.content-wrapper {
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    opacity: .9;
+    margin: 0 auto;
+}
+.main-content h3 {
+    text-align: center;
+    padding-top: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+}
+.main-content-area {
+    padding: 15px;
+}
+h4.ac_title {
+    color: #fff;
+    font-size: 18px;
+    background: rgba(255,255,255,.3);
+    padding: 5px 15px;
+    font-weight: 400;
+}
+.footer-area {
+	background: #fff;
+	padding: 15px;
+}
+.footer-area h4 {
+	color: #444;
+    text-align: right;
+    margin: 0;
+}
+
+.submit-btn-area {
+    text-align: right;
+}
+
+
+ul.login-icon a img {
+    width: 30px;
+}
+ul.login-icon li {
+    display: inline-block;
+}
+
+
+input.account-submit-btn {
+    background: 0;
+    padding: 5px 10px;
+    transition: all .5s;
+}
+input.account-submit-btn:hover {
+    background: green;
+}
+
+
+@media screen and (min-width: 668px) {
+    .content-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        min-width: 500px;
+        box-shadow: 0 5px 38px rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+    }
+}
+
+@media screen and (max-width: 668px) {
+    .content-wrapper {
+        margin: 70px 0 20px 0;
+    }
+}

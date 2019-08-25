@@ -1,0 +1,158 @@
+.section.affaer-section {
+    margin-top: 80px;
+}
+.section.affaer-section .advantage .contain-image {
+    /*height: 120px;*/
+    height: 240px;
+    position: relative;
+    border: 1px solid #808080;
+    -moz-border-radius-topleft: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: none;
+}
+.section.affaer-section .advantage .contain-image .img-container {
+    float: left;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.section.affaer-section .advantage .contain-image .img-container img {
+    max-width: 100%;
+    display: block;
+    margin: 0px auto;
+    padding: 0px;
+}
+.section.affaer-section .advantage .content {
+    border: 1px solid #808080;
+    -moz-border-radius-bottomright: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.section.affaer-section .advantage .content .inside-content {
+    border-top: 1px solid #808080;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    border-top: none;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+.section.affaer-section .advantage .content .inside-content .container.first-container {
+    top: 0px;
+}
+
+.section.affaer-section .advantage .content .inside-content .container {
+    /*position: absolute;*/
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    height: 200px;
+    top: -220px;
+}
+.section.affaer-section .advantage .content .inside-content .container.second-container {
+    background-color: #008bba;
+}
+
+.section.affaer-section .advantage .content .inside-content .container.second-container {
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #009fe3;
+}
+/*.section.affaer-section .advantage .content .inside-content .container {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    height: 200px;
+    top: -220px;
+    transition: all .5s;
+}*/
+
+.section.affaer-section .advantage .content .inside-content .container.second-container p {
+    color: #ffffff;
+    text-align: center;
+    font-weight: 300;
+    margin: 0px;
+}
+.section.affaer-section .advantage .content .inside-content .container i.fa-check {
+    color: green;
+}
+
+.section.affaer-section .advantage .content .inside-content .container .contain-box-cta {
+    margin: 0px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.section.affaer-section .advantage .content .inside-content .container.first-container .h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.section.affaer-section .advantage .content .inside-content .container.second-container p {
+    color: #ffffff;
+    text-align: center;
+    font-weight: 300;
+    margin: 0px;
+}
+.advantage {
+    padding: 65px 0;
+}
+
+
+.section.affaer-section .advantage .content .inside-content .container.second-container .button {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.section.affaer-section .advantage .content .inside-content .container .contain-box-cta .button {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 3px 7px;
+    font-weight: 400;
+    text-transform: uppercase;
+    clear: both;
+    display: inline-block;
+    width: auto;
+}
+.button, .button:link, .button:visited, .button:active, .button:focus {
+    display: block;
+    background: none;
+    border: 2px solid #009fe3;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+    color: #009fe3;
+    font-size: 17px;
+    padding: 8px 15px;
+    margin: 0;
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: auto;
+    outline: 0;
+}
+.section.affaer-section .advantage .content .inside-content .container.second-container .button:hover {
+    background: #ffffff;
+    color: #3e86ac;
+}

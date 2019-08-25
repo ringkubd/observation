@@ -1,0 +1,96 @@
+.client_info_section{margin-top:5px;}
+
+    #hide-table td:last-child a, .action-link {
+
+        color: #1F618D;
+
+        font-weight: bold;
+
+    }
+
+    table th, table td {
+        text-align: center;
+    }
+
+    table td.textarea_td {
+
+        padding: 8px !important;
+
+    }
+    span.name {
+        font-size: 15px;
+        margin-top: 23px;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+    }
+    
+    /* customise selectbox start */
+        ul.select-branch-area label {
+        cursor: pointer;
+    }
+
+    .optionGroup  label{
+        font-weight: 900;
+    }
+
+
+
+    .optionChild {
+        padding-left: 30px;
+    }
+
+    .optionChild-child {
+        padding-left: 55px;
+        font-weight: 400;
+    }
+    
+    ul.select-branch-area li.optionGroup {
+        padding-left: 10px;
+        margin: 6px 0;
+    }
+    .selectBox {
+      position: relative;
+    }
+    .selectBox select {
+      width: 100%;
+      font-weight: bold;
+    }
+    .overSelect {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+    .showhide {
+        display: none;
+    }
+    .checkboxes {
+      border: 1px #dadada solid;
+    }
+    .checkboxes label {
+      display: block;
+      margin-left: 10px;
+    }
+    .checkboxes li:hover, .optionChild:hover {
+      background-color: #1e90ff;
+    }
+    div.checkboxes {
+        max-height: 200px;
+        overflow: auto;
+    }
+    .toggle-change-icon .select-branch-area #add-icon[aria-expanded="false"]::before, .toggle-change-icon .select-branch-area #add-icon[aria-expanded="true"]::before {
+      left: initial;
+      top: 2px;
+      right: 10px;
+}
+/* customise selectbox end */
+    
+    @media only screen and (min-width: 992px) {
+        label#extra_pay-error {
+            position: absolute;
+            left: 0;
+            bottom: -28px;
+        }
+    }

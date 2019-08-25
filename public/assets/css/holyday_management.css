@@ -1,0 +1,334 @@
+    .client_info_section{margin-top:5px;}
+
+    #hide-table td:last-child a, .action-link {
+
+        color: #1F618D;
+
+        font-weight: bold;
+
+    }
+
+    table td.textarea_td {
+
+        padding: 8px !important;
+
+    }
+    
+.ms-options-wrap > button:focus, .ms-options-wrap > button {
+    color: #000;
+}
+.ms-options-wrap > .ms-options > ul input[type="checkbox"] {
+    left: 5px;
+}
+.ms-options-wrap > .ms-options .ms-selectall {
+    font-size: 1.1em;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+h6.pannel-heading {
+    position: absolute;
+    top: -11px;
+    background: #fff;
+    padding: 0 5px;
+    left: 8px;
+}
+.pannel-body {
+    outline: 2px solid #ddd;
+    padding: 12px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.add_form_btn {
+    text-align: right;
+    margin: 10px 10px 0 0;
+}
+.add_form_btn .remove {
+    display: none;
+}
+.holyday-menu {
+    
+}
+.holyday-menu li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    position: relative;
+    margin-bottom: 15px;
+}
+.holyday-menu li:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    bottom: 0;
+    left: 0;
+    background: #ddd;
+}
+.holyday-menu ul li a {
+    display: block;
+    padding: 5px 10px;
+    background: transparent;
+    margin: 5px;
+    color: #fff;
+}
+.holyday-menu ul li.active a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    bottom: 0;
+    left: 0;
+    background: #3498DB;
+    z-index: 1;
+}
+
+.client_info_section{margin-top:5px;}
+
+#collapseable_form .form-group {
+
+    clear: both;
+
+}
+
+
+
+#hide-table td:last-child a {
+
+    color: #1F618D;
+
+    font-weight: bold;
+
+}
+
+
+
+
+
+/* jquey multiselect checkbox start */
+
+.ms-options-wrap > button:focus, .ms-options-wrap > button {
+
+    color: #000;
+
+}
+
+.ms-options-wrap > .ms-options > ul input[type="checkbox"] {
+
+    left: 5px;
+
+}
+
+.ms-options-wrap > .ms-options > .ms-selectall.global {
+
+    margin: 4px 8px;
+
+    text-transform: capitalize;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+}
+
+/* jquey multiselect checkbox end */
+
+
+
+    .client_info_section{margin-top:5px;}
+
+    #hide-table td:last-child a {
+
+        color: #1F618D;
+
+        font-weight: bold;
+
+    }
+
+    .client_info_section{margin-top:5px;}
+
+
+
+    #hide-table td:last-child a {
+
+        color: #1F618D;
+
+        font-weight: bold;
+
+    }
+    button.jscolor {
+        width: 100%;
+    }
+
+
+
+    /* jquey multiselect checkbox start */
+
+    .ms-options-wrap > button:focus, .ms-options-wrap > button {
+
+        color: #000;
+
+    }
+
+    .ms-options-wrap > .ms-options > ul input[type="checkbox"] {
+
+        left: 5px;
+
+    }
+
+    .ms-options-wrap > .ms-options > .ms-selectall.global {
+
+        margin: 4px 8px;
+
+        text-transform: capitalize;
+
+        font-weight: 600;
+
+        font-size: 14px;
+
+    }
+
+    /* jquey multiselect checkbox end */
+
+    h6.pannel-heading {
+
+        position: absolute;
+
+        top: -11px;
+
+        background: #fff;
+
+        padding: 0 5px;
+
+        left: 8px;
+
+    }
+
+    .pannel-body {
+
+        outline: 2px solid #ddd;
+
+        padding: 12px;
+
+        position: relative;
+
+        margin-bottom: 20px;
+
+    }
+
+
+
+    ul.select-branch-area label {
+
+        cursor: pointer;
+
+    }
+
+    .optionGroup  label{
+
+        font-weight: 900;
+
+    }
+
+
+
+    .optionChild {
+
+        padding-left: 30px;
+
+    }
+
+    .optionChild-child {
+
+        padding-left: 55px;
+
+        font-weight: 400;
+
+    }
+
+    /* customise selectbox start */
+
+    ul.select-branch-area li.optionGroup {
+
+        padding-left: 10px;
+
+        margin: 6px 0;
+
+    }
+
+    .selectBox {
+
+      position: relative;
+
+    }
+
+
+
+    .selectBox select {
+
+      width: 100%;
+
+      font-weight: bold;
+
+    }
+
+
+
+    .overSelect {
+
+      position: absolute;
+
+      left: 0;
+
+      right: 0;
+
+      top: 0;
+
+      bottom: 0;
+
+    }
+
+
+
+    #checkboxes {
+
+      display: none;
+
+      border: 1px #dadada solid;
+
+    }
+
+    #checkboxes label {
+
+      display: block;
+
+      margin-left: 10px;
+
+    }
+
+    #checkboxes li:hover, .optionChild:hover {
+
+      background-color: #1e90ff;
+
+    }
+
+    div#checkboxes {
+
+        max-height: 130px;
+
+        overflow: auto;
+
+    }
+
+
+
+    .toggle-change-icon .select-branch-area #add-icon[aria-expanded="false"]::before, .toggle-change-icon .select-branch-area #add-icon[aria-expanded="true"]::before {
+
+      left: initial;
+
+      top: 2px;
+
+      right: 10px;
+
+}
+/* customise selectbox end */

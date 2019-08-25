@@ -1,0 +1,79 @@
+.navbar {
+    margin: 0;
+}
+.profile-wrapper {
+    
+}
+.top-content-wrapper {
+    width: 100%;
+    height: 40vh;
+    padding-top: 30px;
+    background-color: #3F4B6B;
+}
+.profile-pic, .profile-info {
+    float: left;
+}
+.profile-info {
+    margin-left: 30px;
+    color: #fff;
+}
+.profile-info p {
+    color: #fff;
+}
+.profile-info .name {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.about-us {
+    background: #fff;
+}
+.content-wrapper {
+    margin-top: -100px;
+}
+.content-wrapper {
+    margin-top: -100px;
+    background: #fff;
+    padding: 10px;
+    min-height: 50vh;
+}
+.content-wrapper .content-heading {
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 3px solid #3F4B6B;
+    position: relative;
+}
+.content-wrapper .content-heading:before {
+    position: absolute;
+    content: '';
+    background: #3F4B6B;
+    height: 100%;
+    width: 10px;
+    top: 0;
+}
+.content-wrapper .content-heading:after {
+    position: absolute;
+    content: '';
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #3F4B6B;
+    border-right: 10px solid transparent;
+    top: 50%;
+    margin-top: -10px;
+    margin-left: 10px;
+}
+.content-wrapper .content-heading h1{
+    margin: 0;
+    margin-left: 25px;
+}
+.company-desc {
+    margin: 30px;
+    padding: 20px;
+}
+.company-desc .opacity-title {
+    color: #ccc;
+}
+.company-desc .bold-title {
+    font-weight: 900;
+    border-bottom: 3px solid #3F4B6B;
+}

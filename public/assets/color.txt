@@ -1,0 +1,2 @@
+side-bar color: #003b7F
+sidebar after:color: #4474E2

@@ -1,0 +1,2 @@
+
+Warning: file_get_contents(\\digiplan.se@SSL@2078\DavWWWRoot\app\traits\ActivityTraits.php): failed to open stream: No such file or directory in C:\Users\hp\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 1736

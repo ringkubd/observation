@@ -1,0 +1,382 @@
+.main label {
+    color: rgba(0, 0, 0, 0.71);
+}
+#image_preview {
+    float: left;
+    ;
+}
+#image_preview img {
+    font-size: 30px;
+    max-width: 150px;
+    line-height: 180px;
+    font-weight: bold;
+    color: #C0C0C0;
+    background-color: #FFFFFF;
+}
+#selectImage {
+    border-radius: 10px;
+    margin-left: 50px;
+    float: left;
+}
+#selectImage input {
+    margin-bottom: 10px;
+}
+.submit {
+    font-size: 16px;
+    border: 1px solid #ddd;
+    color: #4E4D4B;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 20px;
+    width: 100%;
+    padding: 8px;
+}
+.submit:hover {}
+#file {
+    padding: 5px;
+    border: 1px solid #aaa;
+    margin-top: 10px;
+    border-radius: 0;
+    width: 100%;
+    padding: 8px;
+}
+#message {
+    position: absolute;
+    top: 120px;
+    left: 815px;
+}
+#success {
+    color: green;
+}
+#invalid {
+    color: red;
+}
+#line {
+    margin-top: 274px;
+}
+#error {
+    color: red;
+}
+#error_message {
+    color: blue;
+}
+#loading {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 850px;
+    font-size: 25px;
+}
+#mess>h4 {
+    margin: 10px 0 0;
+}
+li.optgroup .label {
+    text-align: left;
+    color: #1F618D;
+    font-size: 15px;
+    border-bottom: 1px solid #ccc;
+    padding: 5px !important;
+}
+.ms-options-wrap>.ms-options>ul label {
+    font-weight: 400;
+}
+
+/*switch css*/
+.onoffswitch-small {
+    -moz-user-select: none;
+    position: relative;
+    width: 60px;
+}
+.onoffswitch-small-checkbox {
+    display: none;
+}
+.onoffswitch-small-label {
+    border: 2px solid #999999;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+}
+.onoffswitch-small-inner {
+    display: block;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+    width: 200%;
+}
+.onoffswitch-small-inner::before, .onoffswitch-small-inner::after {
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    float: left;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    height: 18px;
+    line-height: 18px;
+    padding: 0;
+    width: 50%;
+}
+.onoffswitch-small-inner::before {
+    background-color: #34a7c1;
+    color: #ffffff;
+    content: "ON";
+    padding-left: 9px;
+}
+.onoffswitch-small-inner::after {
+    background-color: #eeeeee;
+    color: #999999;
+    content: "OFF";
+    padding-right: 9px;
+    text-align: right;
+}
+.onoffswitch-small-switch {
+    background: #ffffff none repeat scroll 0 0;
+    border: 2px solid #999999;
+    border-radius: 10px;
+    bottom: 0;
+    display: block;
+    margin: 3px;
+    position: absolute;
+    right: 38px;
+    top: 0;
+    transition: all 0.3s ease-in 0s;
+    width: 12px;
+}
+.onoffswitch-small-checkbox:checked+.onoffswitch-small-label .onoffswitch-small-inner {
+    margin-left: 0;
+}
+.onoffswitch-small-checkbox:checked+.onoffswitch-small-label .onoffswitch-small-switch {
+    right: 0;
+}
+label.code-label {
+    margin-top: 5px;
+}
+/* customise for this page */
+
+.modal-content .onoffswitch-small {
+    position: initial;
+}
+.modal-content .onoffswitch-small-label {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.modal-content .onoffswitch-small-switch {
+    margin: 2px;
+    width: 9px;
+}
+/*switch css end*/
+
+.client_info_section{margin-top:5px;}
+
+#collapseable_form .form-group {
+
+    clear: both;
+
+}
+
+
+
+#hide-table td:last-child a {
+
+    color: #1F618D;
+
+    font-weight: bold;
+
+}
+
+/* jquey multiselect checkbox start */
+
+.ms-options-wrap > button:focus, .ms-options-wrap > button {
+
+    color: #000;
+
+}
+
+.ms-options-wrap > .ms-options > ul input[type="checkbox"] {
+
+    left: 5px;
+
+}
+
+.ms-options-wrap > .ms-options > .ms-selectall.global {
+
+    margin: 4px 8px;
+
+    text-transform: capitalize;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+}
+
+/* jquey multiselect checkbox end */
+
+
+
+    .client_info_section{margin-top:5px;}
+
+    #hide-table td:last-child a {
+
+        color: #1F618D;
+
+        font-weight: bold;
+
+    }
+
+    .client_info_section{margin-top:5px;}
+
+
+
+    #hide-table td:last-child a {
+
+        color: #1F618D;
+
+        font-weight: bold;
+
+    }
+
+
+
+    /* jquey multiselect checkbox start */
+
+    .ms-options-wrap > button:focus, .ms-options-wrap > button {
+
+        color: #000;
+
+    }
+
+    .ms-options-wrap > .ms-options > ul input[type="checkbox"] {
+
+        left: 5px;
+
+    }
+
+    .ms-options-wrap > .ms-options > .ms-selectall.global {
+
+        margin: 4px 8px;
+
+        text-transform: capitalize;
+
+        font-weight: 600;
+
+        font-size: 14px;
+
+    }
+
+    /* jquey multiselect checkbox end */
+
+    h6.pannel-heading {
+
+        position: absolute;
+
+        top: -11px;
+
+        background: #fff;
+
+        padding: 0 5px;
+
+        left: 8px;
+
+    }
+
+    .pannel-body {
+
+        outline: 2px solid #ddd;
+
+        padding: 12px;
+
+        position: relative;
+
+        margin-bottom: 20px;
+
+    }
+
+    .status-col {
+        color: #3498DB;
+        font-weight: bold;
+    }
+
+
+    /* customise selectbox start */
+    ul.select-branch-area label {
+        cursor: pointer;
+    }
+    .optionGroup  label{
+        font-weight: 900;
+    }
+    .optionChild {
+        padding-left: 30px;
+    }
+    .optionChild-child {
+        padding-left: 55px;
+        font-weight: 400;
+    }
+    ul.select-branch-area li.optionGroup {
+        padding-left: 10px;
+        margin: 6px 0;
+    }
+    .selectBox {
+      position: relative;
+    }
+    .selectBox select {
+      width: 100%;
+      font-weight: bold;
+    }
+    .overSelect {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+    .showhide {
+        display: none;
+    }
+    .checkboxes {
+      border: 1px #dadada solid;
+    }
+    .checkboxes label {
+      display: block;
+      margin-left: 10px;
+    }
+    .checkboxes li:hover, .optionChild:hover {
+      background-color: #1e90ff;
+    }
+    div.checkboxes {
+        max-height: 200px;
+        overflow: auto;
+    }
+    .toggle-change-icon .select-branch-area #add-icon[aria-expanded="false"]::before, .toggle-change-icon .select-branch-area #add-icon[aria-expanded="true"]::before {
+      left: initial;
+      top: 2px;
+      right: 10px;
+    }
+/* customise selectbox end */
+
+.services .all_services {
+    min-height: 184px;
+}
+
+/* modal start*/
+.bg-blue {
+    background: #02111D;
+    background: -webkit-linear-gradient(to right, #02111D, #037BB5, #02111D);
+    background: linear-gradient(to right, #02111D, #037BB5, #02111D);
+}
+@media only screen and (min-width: 992px) {
+    .modal-lg {
+        width: 98%;
+    }
+}
+/* modal end*/
+
+@media only screen and (max-width: 800px) {
+    table td img {
+        display: block;
+        margin: 0 auto;
+    }
+}
