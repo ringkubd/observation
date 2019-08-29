@@ -38,7 +38,13 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/Support.php"
+            "app/Helpers/Support.php",
+            "app/helper/helper.php",
+            "app/Helpers/Helper.php",
+            "app/helper/Branch.php",
+            "app/helper/saveconfig.php",
+            "app/helper/companyid.php",
+            "app/Helpers/RemoveSpecialCharector.php"
         ],
         "classmap": [
             "database/seeds",

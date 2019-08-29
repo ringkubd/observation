@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/locale-all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/locale/sv.js"></script>
     <script  src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     {{Html::script('assets/js/jquery-ui.min.js')}}
     {{ Html::script('assets/js/jquery.multiselect.js') }}
     {{Html::script('assets/js/bootstrap-datetimepicker.js')}}
@@ -37,49 +38,35 @@
     {{Html::style('assets/css/bootstrap-datetimepicker.css')}}
     {{Html::style('assets/css/common_style.css')}}
     @yield('style')
-    
-    <script>
-       /* preloading option start................... */
 
-       $(window).on("load", function () {
-         // Animate loader off screen
-         $(".se-pre-con").delay(600).fadeOut("slow");;
-       });
+</head>
 
+<body>
 
-      /* preloading option end................... */
-    </script>
-  </head>
-
-  <body>
-    <!--=== PAGE PRELOADER ===-->
-    <div class="se-pre-con"></div>
-    
-
-  	<div class="wrapper">
-    	@include('dashboard.inc.left-sidebar')
-  		<div id="content">
-  	    @include('dashboard.inc.header')
+<div class="wrapper">
+    @include('dashboard.inc.left-sidebar')
+    <div id="content">
+        @include('dashboard.inc.header')
         <div class="main-content">
             <div class="container-fluid">
                 @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
 
                 @endif
 
                 @if ($errors->any())
-                   <ul class="alert alert-danger">
+                    <ul class="alert alert-danger">
 
-                    @foreach ($errors->all() as $message)
+                        @foreach ($errors->all() as $message)
 
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
+                            <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
                 @endif
             </div>
-          @yield('content')
+            @yield('content')
         </div>
         @include('dashboard.inc.footer')
         <script>
@@ -89,7 +76,7 @@
                 return parts.join(".");
             }
         </script>
-  		</div>
-	 </div>
-  </body>
+    </div>
+</div>
+</body>
 </html>

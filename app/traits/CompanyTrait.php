@@ -27,12 +27,6 @@ trait CompanyTrait
         	return Auth::user()->company_id;
 
         }
-        elseif(Auth::guard('owner')->check())
-        {
-        	return Auth::guard('owner')->user()->company_id;
-        }else{
-        	abort(419, $message = 'Sorry! You dont have right to access!');
-        }
     }
 
     /*

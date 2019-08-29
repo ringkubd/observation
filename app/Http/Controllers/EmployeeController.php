@@ -13,9 +13,7 @@ class EmployeeController extends Controller
 {
     public function index(){
         $userBranch = where_branch_id();
-        $data = User::whereHas("branch",function ($q)use($userBranch){
-            $q->{$userBranch[0]}("id",$userBranch[1]);
-        })->with('branch')->get();
+        $data = User::with('branch')->get();
         $model = new User();
         $branch = $this->makeBranchOption();
         return view("employee.index",compact('model','branch','data'));

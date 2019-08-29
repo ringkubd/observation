@@ -22,7 +22,7 @@ class OperantController extends Controller {
 
 	public function __construct() {
 
-		$this->middleware('has_permission');
+		//$this->middleware('has_permission');
 
 	}
 	public function index() {
@@ -46,7 +46,7 @@ class OperantController extends Controller {
 		} else {
 			$primarey_id = $all_branch_of_login_user[0]['id'];
 		}
-		$client_info = client::whereCompany_id($this->companyid())->where('branch_id', $primarey_id)->where('is_task', 0)->with('GenerateOperantStatus')->with('OperantHasCategoryStatus')->get();
+		$client_info = client::where('branch_id', $primarey_id)->with('GenerateOperantStatus')->with('OperantHasCategoryStatus')->get();
 		//return dump($client_info);
 		return view('operant.status', compact('client_info'));
 	}
@@ -60,7 +60,7 @@ class OperantController extends Controller {
 		} else {
 			$primarey_id = $all_branch_of_login_user[0]['id'];
 		}
-		$client_info = client::whereCompany_id($this->companyid())->where('branch_id', $primarey_id)->where('is_task', 0)->with('GenerateOperantStatus')->get();
+		$client_info = client::where('branch_id', $primarey_id)->with('GenerateOperantStatus')->get();
 
 		$pdf = PDF::loadView('operant.status_pdf', compact('client_info'));
 		$pdf->setPaper('A4', 'landscape');
@@ -82,7 +82,7 @@ class OperantController extends Controller {
 		} else {
 			$primarey_id = $all_branch_of_login_user[0]['id'];
 		}
-		$client_info = client::whereCompany_id($this->companyid())->where('branch_id', $primarey_id)->where('is_task', 0)->get();
+		$client_info = client::where('branch_id', $primarey_id)->get();
 		return view('operant.hantering', compact('client_info'));
 	}
 
@@ -96,7 +96,7 @@ class OperantController extends Controller {
 		} else {
 			$primarey_id = $all_branch_of_login_user[0]['id'];
 		}
-		$client_info = client::whereCompany_id($this->companyid())->where('branch_id', $primarey_id)->where('is_task', 0)->get();
+		$client_info = client::where('branch_id', $primarey_id)->get();
 
 		$info = OperantLevel::with(['OperantCategory' => function ($q) use ($client, $company, $branch) {
 			$q->with(['OperantHanteringField' => function ($q) use ($client, $company, $branch) {
@@ -119,7 +119,7 @@ class OperantController extends Controller {
 		$level1 = 0;
 		$level2 = 0;
 		$level3 = 0;
-		$client_info = client::where('id', $client)->whereCompany_id($company)->where('branch_id', $branch)->where('is_task', 0)->first();
+		$client_info = client::where('id', $client)->whereCompany_id($company)->where('branch_id', $branch)->first();
 		$clientCategoryConfig = ClientWiseOperantCategoryConfig::where('client_id', $client)->where('company_id', $company)->where('branch_id', $branch)->get();
 		if (count($clientCategoryConfig) == 0) {
 			DB::select(DB::raw("call insert_into_client_config('$client','$branch','$company')"));
@@ -171,7 +171,7 @@ class OperantController extends Controller {
 		$level1 = 0;
 		$level2 = 0;
 		$level3 = 0;
-		$client_info = client::where('id', $client)->whereCompany_id($company)->where('branch_id', $branch)->where('is_task', 0)->first();
+		$client_info = client::where('id', $client)->whereCompany_id($company)->where('branch_id', $branch)->first();
 		$clientCategoryConfig = ClientWiseOperantCategoryConfig::where('client_id', $client)->where('company_id', $company)->where('branch_id', $branch)->get();
 		if (count($clientCategoryConfig) == 0) {
 			DB::select(DB::raw("call insert_into_client_config('$client','$branch','$company')"));

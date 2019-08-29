@@ -100,7 +100,6 @@
                 <div class="branch-area">
                     <div class="form-group branch-area">
                         <label for="parent_brance">{{trans('header.branch')}}<span class="red">*</span> </label>
-
                         <select id="parent_brance_all" class="form-control" name="branch_id" required change_url="changes" url={{ route('sbbranch') }}>
 
                             <option @if(session()->get('parent_branch') == "all"){{ "selected" }}@endif value="">{{trans('header.all')}}</option>

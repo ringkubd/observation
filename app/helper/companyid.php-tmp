@@ -1,0 +1,30 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+
+if (!function_exists('coid')) {
+
+function coid() {
+		if (Auth::check()) {
+			return Auth::user()->company_id;
+
+		} elseif (Auth::guard('owner')->check()) {
+			return Auth::guard('owner')  ->user()->company_id;
+		} else {
+			abort(419, $message = 'Sorry! You dont have right to access!');
+		}
+	}
+}
+
+if (!function_exists('orgtype')) {
+	# code...
+	function orgtype() {
+		if (Auth::check()) {
+			return $companyinfo = Auth::user()->company->organization_type_id;
+			//return $companyinfo->organization_type_id;
+		} elseif (Auth::guard('owner')->check()) {
+			return Auth::guard('owner')  ->user()->organization_type_id;
+		} else {
+			abort(419, $message = 'Sorry! You dont have right to access!');
+		}
+	}
+}

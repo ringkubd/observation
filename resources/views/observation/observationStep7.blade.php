@@ -154,7 +154,7 @@
                         <tr>
                             <td>{{$item}}</td>
                             @for($i=1;$i<=7;$i++)
-                            <td><input class="form-control adl_value" value="{{ $observation_single_value[$type . '_' . $adl_id=($key+1).'_'.$i] }}" attr_day_id="{{$i}}" attr_url="{{url('store-observation-stag7')}}" adl_type="{{$type}}"  adl_id="{{$adl_id=$key+1}}" stag="2" client_id="{{$request->client_id}}" branch_id="{{$request->branch_id}}" company_id="{{$request->company_id}}">
+                            <td><input class="form-control adl_value" value="{{ $observation_single_value[$type . '_' . $adl_id=($key+1).'_'.$i] ?? null }}" attr_day_id="{{$i}}" attr_url="{{url('store-observation-stag7')}}" adl_type="{{$type}}"  adl_id="{{$adl_id=$key+1}}" stag="2" client_id="{{$request->client_id}}" branch_id="{{$request->branch_id}}" company_id="{{$request->company_id}}">
                             </td>
                             @endfor
 
@@ -174,7 +174,7 @@
         <div class="comment-ob">
             <p class="text-white"><strong>Kommentar</strong></p>
             <div class="form-group">
-                <textarea name="" id="" rows="4" class="form-control add_comment" attr_url="{{url('store-observation-comment')}}"  stag="7" client_id="{{$request->client_id}}" branch_id="{{$request->branch_id}}"  company_id="{{$request->company_id}}">{{ $observationComment->input_text }}</textarea>
+                <textarea name="" id="" rows="4" class="form-control add_comment" attr_url="{{url('store-observation-comment')}}"  stag="7" client_id="{{$request->client_id}}" branch_id="{{$request->branch_id}}"  company_id="{{$request->company_id}}">{{ $observationComment->input_text ?? null }}</textarea>
             </div>
         </div>
         <div class="archive-list">

@@ -39,7 +39,7 @@ class ObservationController extends Controller {
 	}
 	public function branch_id() {
 
-		$defaultbranch = bb::whereIsdelete("0")->whereCompany_id($this->companyid())->first();
+		$defaultbranch = bb::whereIsdelete("0")->first();
 
 		if (Auth::check()) {
 			$empdefbranch = explode(',', Auth::user()->branch_id);
@@ -88,29 +88,19 @@ class ObservationController extends Controller {
 	}
 	public function index() {
 
-		// $datakey = "data" . coid();
-		// Cache::forget($datakey);
-		// $all_branch_of_login_user = $this->getallbranch_for_shedule();
-		// if (Session::has('schema_branch_id')) {
-		// 	$primarey_id = Session::get('schema_branch_id');
-		// } else {
-		// 	$primarey_id = $all_branch_of_login_user[0]['id'];
-		// }
-		// $client_info = client::whereCompany_id($this->companyid())->where('branch_id', $primarey_id)->where('is_task', 0)->get();
-
 		$branchidwhere = $this->wherebranchid();
 		$condition = $branchidwhere[0];
-		$client_info = client::whereCompany_id($this->companyid())->$condition('branch_id', $this->wherebranchid()[1])->get();
+		$client_info = client::$condition('branch_id', $this->wherebranchid()[1])->get();
 
 		return view('observation.observation', compact('client_info', 'request'));
 	}
 	public function observationHomeStage(Request $request) {
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
+		$client_info = client::where('branch_id', $request->branch_id)->get();
 		return view('observation.observation_stag.step_list', compact('request', 'client_info', 'request'));
 	}
 	public function observationStep1(Request $request) {
 		$items = config('observation');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
 		$ObservationStag1 = ObservationStag1::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('client_id', $request->client_id)->get();
 		$observationArray = [];
 		$observationsum = [];
@@ -124,14 +114,10 @@ class ObservationController extends Controller {
 	}
 
 	public function SaveObservationStag1(Request $request) {
-		// return $request->all();
-
 		if ($request->input_text == null) {
-			ObservationStag1::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('task_id', $request->task_id)->where('sub_task_id', $request->sub_task_id)->delete();
-
+			ObservationStag1::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->delete();
 		} else {
 			ObservationStag1::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'task_id' => $request->task_id, 'sub_task_id' => $request->sub_task_id], $request->all());
-
 		}
 		$ObservationStag1 = ObservationStag1::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('client_id', $request->client_id)->get();
 		$observationArray = [];
@@ -148,15 +134,15 @@ class ObservationController extends Controller {
 		$sub_task_id = [3, 4, 5];
 		ObservationStag1::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'task_id' => $request->task_id, 'sub_task_id' => $request->sub_task_id], $request->all());
 		$subtask_id = array_diff($sub_task_id, [$request->sub_task_id]);
-		ObservationStag1::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('task_id', $request->task_id)->whereIn('sub_task_id', $subtask_id)->delete();
+		ObservationStag1::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('task_id', $request->task_id)->whereIn('sub_task_id', $subtask_id)->delete();
 
 	}
 
 	public function observationStep2(Request $request) {
 		$items = config('ObservationStagTwo');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->where('company_id', $request->company_id)->get();
-		$observation_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_2.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->get();
+		$observation_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_2.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
 			$observation_graph_data[$value->adl_type . '_' . $value->adl_id] = $value;
@@ -165,18 +151,18 @@ class ObservationController extends Controller {
 		foreach ($observation as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_id . '_' . $value->attr_day_id] = $value->input_text ?? 0;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 2)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 2)->first();
 		return view('observation.observationStep2', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment'));
 	}
 
 	public function observationStep3(Request $request) {
 		//return $request;
 		$items = config('ObservationStagTwo');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->where('company_id', $request->company_id)->get();
-		$observation_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_2.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->get();
+		$observation_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_2.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
 
-		$observation_archive_value = ObservationStag2Archive::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_2_archive.*")->where('input_text', '>', 0)->groupBy(['graph'])->get();
+		$observation_archive_value = ObservationStag2Archive::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_2_archive.*")->where('input_text', '>', 0)->groupBy(['graph'])->get();
 
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
@@ -187,16 +173,16 @@ class ObservationController extends Controller {
 		foreach ($observation as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_id . '_' . $value->attr_day_id] = $value->input_text ?? 0;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 3)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 3)->first();
 		return view('observation.observationStep3', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment', 'observation_archive_value'));
 	}
 
 	public function observation_archive_show(Request $request) {
 		$items = config('ObservationStagTwo');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation_archive = ObservationStag2Archive::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->where('company_id', $request->company_id)->where('graph', $request->graph)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation_archive = ObservationStag2Archive::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->where('graph', $request->graph)->get();
 
-		$observation_archive_value = ObservationStag2Archive::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_2_archive.*")->where('input_text', '>', 0)->where('graph', $request->graph)->groupBy(['adl_id', 'adl_type'])->get();
+		$observation_archive_value = ObservationStag2Archive::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_2_archive.*")->where('input_text', '>', 0)->where('graph', $request->graph)->groupBy(['adl_id', 'adl_type'])->get();
 
 		//dump($observation_archive_value);
 
@@ -208,7 +194,7 @@ class ObservationController extends Controller {
 		foreach ($observation_archive as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_id . '_' . $value->attr_day_id] = $value->input_text ?? 0;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 3)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 3)->first();
 		return view('observation.observationStep3Archive', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment', 'observation_archive_value'));
 	}
 
@@ -216,7 +202,7 @@ class ObservationController extends Controller {
 
 		ObservationStag2::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'adl_type' => $request->adl_type, 'adl_id' => $request->adl_id, 'attr_day_id' => $request->attr_day_id], $request->all());
 
-		$observation_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_2.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
+		$observation_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_2.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
 
 		$items = config('ObservationStagTwo');
 		$observation_graph_data = [];
@@ -227,9 +213,9 @@ class ObservationController extends Controller {
 	}
 
 	public function observation_stag_3_archive_store(Request $request) {
-		$observation_stage_3_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get()->toArray();
+		$observation_stage_3_value = ObservationStag2::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get()->toArray();
 
-		$last_graph = ObservationStag2Archive::orderBy('graph', 'desc')->select('graph')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->first();
+		$last_graph = ObservationStag2Archive::orderBy('graph', 'desc')->select('graph')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->first();
 
 		$observation_stage_3_value_arr = [];
 		foreach ($observation_stage_3_value as $key => $value) {
@@ -246,9 +232,9 @@ class ObservationController extends Controller {
 
 	public function observationStep4(Request $request) {
 		$items = config('ObservationStagThree');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag3::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('input_text', '>', 0)->get();
-		$observation_value = ObservationStag3::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("AVG(NULLIF(input_text ,0)) as day_value,observation_stag_3.*")->groupBy(['adl_id', 'adl_type'])->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag3::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->get();
+		$observation_value = ObservationStag3::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("AVG(NULLIF(input_text ,0)) as day_value,observation_stag_3.*")->groupBy(['adl_id', 'adl_type'])->get();
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
 			$observation_graph_data[$value->adl_type . '_' . $value->adl_id] = $value;
@@ -257,14 +243,14 @@ class ObservationController extends Controller {
 		foreach ($observation as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_id . '_' . $value->attr_day_id] = $value->input_text ?? 0;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 4)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 4)->first();
 		return view('observation.observationStep4', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment'));
 	}
 
 	public function StoreobservationStep4(Request $request) {
 		ObservationStag3::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'adl_type' => $request->adl_type, 'adl_id' => $request->adl_id, 'attr_day_id' => $request->attr_day_id], $request->all());
 
-		$observation_value = ObservationStag3::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_3.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
+		$observation_value = ObservationStag3::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_3.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
 		$items = config('ObservationStagThree');
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
@@ -275,9 +261,9 @@ class ObservationController extends Controller {
 
 	public function observationStep5(Request $request) {
 		$items = config('ObservationStagFour');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag4::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->where('company_id', $request->company_id)->get();
-		$observation_value = ObservationStag4::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_4.*")->groupBy(['adl_id', 'adl_type'])->where('input_text', '>', 0)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag4::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('input_text', '>', 0)->get();
+		$observation_value = ObservationStag4::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_4.*")->groupBy(['adl_id', 'adl_type'])->where('input_text', '>', 0)->get();
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
 			$observation_graph_data[$value->adl_type . '_' . $value->adl_id] = $value;
@@ -286,14 +272,14 @@ class ObservationController extends Controller {
 		foreach ($observation as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_id . '_' . $value->attr_day_id] = $value->input_text ?? 0;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 5)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 5)->first();
 		return view('observation.observationStep5', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment'));
 	}
 
 	public function StoreobservationStep5(Request $request) {
 		ObservationStag4::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'adl_type' => $request->adl_type, 'adl_id' => $request->adl_id, 'attr_day_id' => $request->attr_day_id], $request->all());
 
-		$observation_value = ObservationStag4::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_4.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
+		$observation_value = ObservationStag4::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_4.*")->where('input_text', '>', 0)->groupBy(['adl_id', 'adl_type'])->get();
 		$items = config('ObservationStagFour');
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
@@ -305,9 +291,9 @@ class ObservationController extends Controller {
 	public function observationStep6(Request $request) {
 		$items = config('ObservationStagFive');
 		$items_heading = config('ObservationStagFiveHeading');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag5::orderBy('adl_type', 'asc')->orderBy('adl_sub_type', 'asc')->orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$cat_count = ObservationStag5Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag5::orderBy('adl_type', 'asc')->orderBy('adl_sub_type', 'asc')->orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$cat_count = ObservationStag5Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$observation_graph_data_cat = [];
 		$observation_graph_data = [];
 		$observation_single_cat_value = [];
@@ -320,7 +306,7 @@ class ObservationController extends Controller {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_sub_type . '_' . $value->adl_id] = $value;
 			$observation_single_cat_value[$value->adl_type . '_' . $value->adl_sub_type][] = (($value->input_text1 ?? 0) * 0) + (($value->input_text2 ?? 0) * 1) + (($value->input_text3 ?? 0) * 2) + (($value->input_text4 ?? 0) * 3);
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 6)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 6)->first();
 		//return $observation_single_value;
 		return view('observation.observationStep6', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data_cat', 'observation_graph_data', 'observation_single_value', 'items_heading', 'observationComment', 'observation_single_cat_value'));
 	}
@@ -331,8 +317,8 @@ class ObservationController extends Controller {
 		$observation_value = ObservationStag5::get();
 		$items = config('ObservationStagFive');
 		$items_heading = config('ObservationStagFiveHeading');
-		$cat_count = ObservationStag5Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$observation = ObservationStag5::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$cat_count = ObservationStag5Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag5::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$observation_graph_data_cat = [];
 		$observation_graph_data = [];
 		$observation_single_cat_value = [];
@@ -353,9 +339,9 @@ class ObservationController extends Controller {
 
 	public function observationStep7(Request $request) {
 		$items = config('ObservationStagSix');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag6::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$observation_value = ObservationStag6::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("sum(input_text)/7 as day_value,observation_stag_6.*")->groupBy(['adl_type'])->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag6::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$observation_value = ObservationStag6::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("sum(input_text)/7 as day_value,observation_stag_6.*")->groupBy(['adl_type'])->get();
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
 			$observation_graph_data[$value->adl_type] = $value;
@@ -364,7 +350,7 @@ class ObservationController extends Controller {
 		foreach ($observation as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_id . '_' . $value->attr_day_id] = $value->input_text ?? 0;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 7)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 7)->first();
 		return view('observation.observationStep7', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment'));
 
 	}
@@ -373,7 +359,7 @@ class ObservationController extends Controller {
 
 		ObservationStag6::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'adl_type' => $request->adl_type, 'adl_id' => $request->adl_id, 'attr_day_id' => $request->attr_day_id], $request->all());
 
-		$observation_value = ObservationStag6::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("sum(input_text)/7 as day_value,observation_stag_6.*")->groupBy(['adl_type'])->get();
+		$observation_value = ObservationStag6::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("sum(input_text)/7 as day_value,observation_stag_6.*")->groupBy(['adl_type'])->get();
 		$items = config('ObservationStagFour');
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
@@ -385,10 +371,10 @@ class ObservationController extends Controller {
 	public function observationStep8(Request $request) {
 		$items = config('ObservationStagSeven');
 		$items_heading = config('ObservationStagSevenHeading');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag7::orderBy('adl_type', 'asc')->orderBy('adl_sub_type', 'asc')->orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$cat_count = ObservationStag7Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$SocialFardigheter50 = SocialFardigheter50::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag7::orderBy('adl_type', 'asc')->orderBy('adl_sub_type', 'asc')->orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$cat_count = ObservationStag7Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$SocialFardigheter50 = SocialFardigheter50::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$observation_graph_data_cat = [];
 		$observation_graph_data = [];
 		$observation_single_cat_value = [];
@@ -405,7 +391,7 @@ class ObservationController extends Controller {
 		foreach ($SocialFardigheter50 as $key => $value) {
 			$SocialFardigheter50value[$value->adl_type] = $value;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 7)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 7)->first();
 		//return $observation_single_value;
 		return view('observation.observationStep8', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data_cat', 'observation_graph_data', 'observation_single_value', 'items_heading', 'observationComment', 'observation_single_cat_value', 'SocialFardigheter50value'));
 
@@ -417,9 +403,9 @@ class ObservationController extends Controller {
 		$observation_value = ObservationStag7::get();
 		$items = config('ObservationStagSeven');
 		$items_heading = config('ObservationStagSevenHeading');
-		$cat_count = ObservationStag7Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$observation = ObservationStag7::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$SocialFardigheter50 = SocialFardigheter50::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$cat_count = ObservationStag7Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag7::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$SocialFardigheter50 = SocialFardigheter50::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$observation_graph_data_cat = [];
 		$observation_graph_data = [];
 		$observation_single_cat_value = [];
@@ -444,9 +430,9 @@ class ObservationController extends Controller {
 
 	public function observationStep9(Request $request) {
 		$items = config('ObservationStagEight');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag8::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$observation_value = ObservationStag8Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag8::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$observation_value = ObservationStag8Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
 			$observation_graph_data[$value->adl_type] = $value;
@@ -455,7 +441,7 @@ class ObservationController extends Controller {
 		foreach ($observation as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_id] = $value->input_text ?? null;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 9)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 9)->first();
 
 		//return$observation_single_value;
 		return view('observation.observationStep9', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment'));
@@ -466,7 +452,7 @@ class ObservationController extends Controller {
 
 		ObservationStag8::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'adl_type' => $request->adl_type, 'adl_id' => $request->adl_id, 'attr_day_id' => $request->attr_day_id], $request->all());
 
-		$observation_value = ObservationStag8Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$observation_value = ObservationStag8Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$items = config('ObservationStagThree');
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
@@ -483,10 +469,10 @@ class ObservationController extends Controller {
 	public function observationStep10(Request $request) {
 		$items = config('ObservationStagTen');
 		$items_heading = config('ObservationStagTenHeading');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
 		$observation = ObservationStag10::orderBy('adl_type', 'asc')->orderBy('adl_sub_type', 'asc')->orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$cat_count = ObservationStag10Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$cat_indivisual_percentage = ObservationStag10CatPercentage::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$cat_count = ObservationStag10Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$cat_indivisual_percentage = ObservationStag10CatPercentage::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$observation_graph_data_cat = [];
 		$observation_graph_data = [];
 		$observation_single_cat_value = [];
@@ -508,7 +494,7 @@ class ObservationController extends Controller {
 		foreach ($cat_indivisual_percentage as $key => $value) {
 			$indivisual_percentage[$value->adl_type . '_' . $value->adl_sub_type] = $value;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 6)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 6)->first();
 		return view('observation.observationStep10', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data_cat', 'observation_graph_data', 'observation_single_value', 'items_heading', 'observationComment', 'observation_single_cat_value', 'indivisual_percentage', 'total_value_field'));
 	}
 
@@ -520,9 +506,9 @@ class ObservationController extends Controller {
 		$observation_value = ObservationStag5::get();
 		$items = config('ObservationStagTen');
 		$items_heading = config('ObservationStagTenHeading');
-		$cat_count = ObservationStag10Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$observation = ObservationStag10::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$cat_indivisual_percentage = ObservationStag10CatPercentage::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$cat_count = ObservationStag10Cat::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag10::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$cat_indivisual_percentage = ObservationStag10CatPercentage::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$observation_graph_data_cat = [];
 		$observation_graph_data = [];
 		$observation_single_cat_value = [];
@@ -554,10 +540,10 @@ class ObservationController extends Controller {
 	public function observationStep11(Request $request) {
 		$items = config('ObservationStagEleven');
 		$itemsUnique = config('ObservationStagElevenUnique');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag11::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag11::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 
-		$observation_value = ObservationStag11::orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_11.*")->where('input_text', '>', 0)->groupBy(['adl_sub_type', 'adl_id'])->get();
+		$observation_value = ObservationStag11::orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_11.*")->where('input_text', '>', 0)->groupBy(['adl_sub_type', 'adl_id'])->get();
 
 		$observation_graph_data = [];
 		foreach ($observation_value as $key => $value) {
@@ -569,15 +555,15 @@ class ObservationController extends Controller {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_sub_type . '_' . $value->adl_id] = $value->input_text ?? 0;
 		}
 		//dump($observation_graph_data);
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 11)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 11)->first();
 		return view('observation.observationStep11', compact('client_info', 'request', 'items', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'observationComment', 'itemsUnique'));
 	}
 
 	public function StoreobservationStep11(Request $request) {
 		ObservationStag11::updateOrCreate(['client_id' => $request->client_id, 'branch_id' => $request->branch_id, 'company_id' => $request->company_id, 'adl_type' => $request->adl_type, 'adl_id' => $request->adl_id, 'adl_sub_type' => $request->adl_sub_type], $request->all());
 
-		$observation = ObservationStag11::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
-		$observation_value = ObservationStag11::orderBy('adl_sub_type', 'asc')->orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->selectRaw("avg(input_text) as day_value,observation_stag_11.*")->where('input_text', '>', 0)->groupBy(['adl_sub_type', 'adl_id'])->get();
+		$observation = ObservationStag11::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
+		$observation_value = ObservationStag11::orderBy('adl_sub_type', 'asc')->orderBy('adl_id', 'asc')->where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->selectRaw("avg(input_text) as day_value,observation_stag_11.*")->where('input_text', '>', 0)->groupBy(['adl_sub_type', 'adl_id'])->get();
 		$items = config('ObservationStagEleven');
 		$itemsUnique = config('ObservationStagElevenUnique');
 		$observation_graph_data = [];
@@ -594,8 +580,8 @@ class ObservationController extends Controller {
 
 	public function observationStep12(Request $request) {
 		$items_heading = config('ObservationStagTwelveHeading');
-		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->where('is_task', 0)->get();
-		$observation = ObservationStag12::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$client_info = client::whereCompany_id($request->company_id)->where('branch_id', $request->branch_id)->get();
+		$observation = ObservationStag12::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 
 		if (count($observation) == 0) {
 
@@ -612,7 +598,7 @@ class ObservationController extends Controller {
 
 			}
 			ObservationStag12::insert($create_array);
-			$observation = ObservationStag12::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+			$observation = ObservationStag12::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		}
 
 		$observation_value = [];
@@ -625,7 +611,7 @@ class ObservationController extends Controller {
 		foreach ($observation as $key => $value) {
 			$observation_single_value[$value->adl_type . '_' . $value->adl_sub_type . '_' . $value->adl_id] = $value;
 		}
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', '12')->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', '12')->first();
 		//return $observation_single_value;
 		return view('observation.observationStep12', compact('client_info', 'request', 'observation_value', 'observation_graph_data', 'observation_graph_data', 'observation_single_value', 'items_heading', 'observationComment', 'observation_graph_data_block', 'observation_graph_data_total'));
 	}
@@ -637,7 +623,7 @@ class ObservationController extends Controller {
 		$observation_value = [];
 		$observation_valueblock = [];
 		$observation_valuetotal = [];
-		$observation = ObservationStag12::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->get();
+		$observation = ObservationStag12::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->get();
 		$items_heading = config('ObservationStagTwelveHeading');
 		$observation_graph_data = [];
 		$observation_graph_data_total = [];
@@ -684,7 +670,7 @@ class ObservationController extends Controller {
 		// dump($observation_graph_data);
 		// dump($adl_type_count);
 		// dump($cat_indivisual_percentage);
-		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('company_id', $request->company_id)->where('stag', 6)->first();
+		$observationComment = ObservationStagComment::where('client_id', $request->client_id)->where('branch_id', $request->branch_id)->where('stag', 6)->first();
 		return view('observation.observationStep13', compact('observation', 'request', 'observation_value', 'observation_graph_data','observation_single_value', 'items_heading','adl_type_count','cat_indivisual_percentage','observationComment','avg'));
 	}
 
